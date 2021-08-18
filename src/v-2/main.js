@@ -2,8 +2,7 @@
 import "./styles.styl"
 import { MIND_STATE_SETTINGS, text } from './cellSettings'
 
-console.log("pathname in v-2", window.location.pathname)
-if (window.location.pathname === "/v-2/") {
+if (window.location.pathname === "/ml-csp/v-2/") {
   runPoem()
 }
 
