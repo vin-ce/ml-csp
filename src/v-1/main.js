@@ -2,7 +2,8 @@ import "./styles.styl"
 import { MIND_STATE_SETTINGS, text } from './cellSettings'
 
 // to avoid JS conflict between versions
-if (window.location.pathname === "/ml-csp/v-1/") {
+// if (window.location.pathname === "/ml-csp/v-1/") {
+if (window.location.pathname === "/v-1/") {
   runPoem()
 }
 
@@ -1166,7 +1167,7 @@ function runPoem () {
 
           if ((textPartIndex >= text[ gridIndex ].part.length - 1)) {
             document.getElementById('right').classList.add('hide')
-          } else if (gridIndex !== text.length - 1 && textPartIndex < text[ gridIndex ].part.length - 1) {
+          } else if (textPartIndex < text[ gridIndex ].part.length - 1) {
             document.getElementById('right').classList.remove('hide')
           }
 
@@ -1176,15 +1177,13 @@ function runPoem () {
         textEl.innerHTML = text[ gridIndex ].part[ textPartIndex ]
       }
 
-      if (gridIndex == 1 || gridIndex == 0 && textPartIndex == 1) {
-        // document.getElementById('left').classList.remove('hide')
-      }
-
+      // if last bit of text of the poem, hide right
       if (gridIndex == text.length - 1 && textPartIndex >= text[ gridIndex ].part.length - 1) {
         document.getElementById('right').classList.add('hide')
       }
 
-      if ((textPartIndex >= text[ gridIndex ].part.length - 1) && !isTransitioning) {
+      // if reached end of text section but audio is still playing and you're not transitioning, hide the right
+      if ((textPartIndex >= text[ gridIndex ].part.length - 1) && !isTransitioning && isAudioPlaying) {
         document.getElementById('right').classList.add('hide')
       }
 
