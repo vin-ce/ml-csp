@@ -19,7 +19,7 @@ const compileJS = () => {
     platform: 'node',
     target: [ 'node10.4' ],
 
-    outfile: 'public/bundle.js'
+    outfile: 'docs/bundle.js'
 
   }).then(() => {
     console.log('✨ success!')
@@ -46,6 +46,6 @@ liveserver.start({
   open: false,
   host: '0.0.0.0',
   port: 3000,
-  root: 'public',
+  root: 'docs',
   loglevel: 0
 })
