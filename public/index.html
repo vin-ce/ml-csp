@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="bundle.css">
+  <title>Vincent's Game of Life</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Upright:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- <h1>HEY!</h1> -->
+  <canvas id="canvas" ></canvas>
+  <div class="controlsContainer dev">
+    <div id="controls">controls	▣</div>
+    <div id="settings" class="settings collapse">
+
+      <button id="start">start</button>
+      <button id="reset">reset</button>
+      <button id="step">step +1</button>
+      <!-- <button id="randomise">randomise</button> -->
+  
+      <label class="dev" for="rate">ms / frame</label>
+      <input class="rate dev" type="text" id="rate" name="rate" placeholder="50">
+  
+      <label class="dev" for="awareness">awareness</label>
+      <input class="awareness" type="range" id="awareness" name="awareness" min="0" max="100" step="25">
+      <!-- debugging button -->
+      <!-- <button id="examine">examine</button> -->
+
+    </div>
+  </div>
+  <div id="text" class="text"></div>
+  <div class="poemControlContainer">
+    <span id="left" class="poemControl">🠔</span>
+    <span id="right" class="poemControl">🠖</span>
+  </div>
+</body>
+<script src='bundle.js'></script>
+</html>

@@ -1,0 +1,20 @@
+{
+  "name": "life-vincent",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node build/build.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chokidar": "^3.5.1",
+    "esbuild": "^0.12.5",
+    "live-server": "^1.2.1"
+  },
+  "dependencies": {
+    "esbuild-stylus-loader": "^0.3.0"
+  }
+}
