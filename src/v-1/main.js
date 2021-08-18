@@ -1,6 +1,7 @@
 import "./styles.styl"
 import { MIND_STATE_SETTINGS, text } from './cellSettings'
 
+console.log("pathname in v-1", window.location.pathname)
 // to avoid JS conflict between versions
 if (window.location.pathname === "/v-1/") {
   runPoem()

@@ -775,6 +775,7 @@ var text = [
 ];
 
 // src/v-1/main.js
+console.log("pathname in v-1", window.location.pathname);
 if (window.location.pathname === "/v-1/") {
   runPoem();
 }
@@ -2135,6 +2136,7 @@ var text2 = [
 ];
 
 // src/v-2/main.js
+console.log("pathname in v-2", window.location.pathname);
 if (window.location.pathname === "/v-2/") {
   runPoem2();
 }
