@@ -775,7 +775,7 @@ var text = [
 ];
 
 // src/v-1/main.js
-if (window.location.pathname === "/v-1/") {
+if (window.location.pathname === "/ml-csp/v-1/") {
   runPoem();
 }
 function runPoem() {
