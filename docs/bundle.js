@@ -2737,4 +2737,8 @@ function runPoem2() {
     }, INCREMENT);
   }
 }
+
+// src/main.js
+console.log("running from main");
+console.log("pathname in main", window.location.pathname);
 //# sourceMappingURL=bundle.js.map
