@@ -1,8 +1,9 @@
-
 import "./styles.styl"
 import { MIND_STATE_SETTINGS, text } from './cellSettings'
 
+// to avoid JS conflict between versions
 if (window.location.pathname === "/ml-csp/v-2/") {
+  // if (window.location.pathname === "/v-1/") {
   runPoem()
 }
 
@@ -21,10 +22,11 @@ function runPoem () {
 
   // keeping track of text and grid indicies.
   let gridIndex = 0
-  let partIndex = 0
+  let textPartIndex = 0
 
   let attempts = 0
   let gameInterval
+  let isAudioPlaying = false
 
   // =============
   // GAME SETTINGS
@@ -51,15 +53,41 @@ function runPoem () {
   const BLUE_400 = '#1F8BED'
   const BLUE_200 = '#91DAFB'
 
+  // from edge of screen
+  const MARGIN_TOP = 10
+  const MARGIN_LEFT = 140 // space for controls
   const MARGIN_RIGHT = 100
 
-  const GRID_WIDTH = 350
+  const MARGIN_GRID_LEFT = 20
+  const MARGIN_GRID_TOP = 250
+
+  const SCROLLBAR_WIDTH = 20
+
+  const NUM_OF_GRID_IN_ONE_ROW = 3
+
+  // grid width would determine itself
+  // const GRID_HEIGHT = canvas.height - MARGIN_TOP * 2
+  // don't really understand why MARGIN_GRID_LEFT * 2, but it works?
+  // const GRID_WIDTH = (window.innerWidth - MARGIN_LEFT - MARGIN_RIGHT - SCROLLBAR_WIDTH - MARGIN_GRID_LEFT * 2) / NUM_OF_GRID_IN_ONE_ROW
+
+  const GRID_WIDTH = 100
+  // const GRID_WIDTH = 400
   const GRID_HEIGHT = GRID_WIDTH
   const CELL_SIZE = GRID_WIDTH / ROWS_NUM // assuming landscape screen 
 
-  const GRID_X_POSITION = (window.innerWidth / 2) - (GRID_WIDTH / 2)
+  // number of rows of entire grids
+  const NUM_OF_GRID_ROWS = Math.ceil(GRID_NUM / NUM_OF_GRID_IN_ONE_ROW)
+  // canvas.height = MARGIN_TOP + GRID_HEIGHT * NUM_OF_GRID_ROWS + MARGIN_GRID_TOP * NUM_OF_GRID_ROWS
 
-  const GRID_Y_POSITION = window.innerHeight * 0.25
+
+  // text settings
+  const PARAGRAPH_WIDTH = 400
+
+  const TEXT_MARGIN_TOP = 50
+  const STATE_TEXT_Y = window.innerHeight * 0.25 + GRID_HEIGHT + TEXT_MARGIN_TOP
+  const STATE_TEXT_X = (window.innerWidth / 2) - GRID_WIDTH - (PARAGRAPH_WIDTH / 2) - MARGIN_RIGHT
+
+
 
   // ----------------
   // grid cell styles
@@ -67,6 +95,7 @@ function runPoem () {
 
   // const STROKE_COLOUR = '#2b2b2b'
   const STROKE_COLOUR = BLACK
+  // const STROKE_COLOUR = BLACK
   const FILL_COLOUR = GREY_500
 
   ctx.strokeStyle = STROKE_COLOUR
@@ -96,8 +125,14 @@ function runPoem () {
         for (let j = 0; j < COLUMNS_NUM; j++) {
 
           // x is horizontal, y is vertical
-          const y = GRID_Y_POSITION + i * CELL_SIZE
-          const x = GRID_X_POSITION + j * CELL_SIZE
+          // const y = MARGIN_TOP + gridRowNum * GRID_HEIGHT + gridRowNum * MARGIN_GRID_TOP + i * CELL_SIZE
+          // const x = MARGIN_LEFT + (a % NUM_OF_GRID_IN_ONE_ROW) * GRID_WIDTH + MARGIN_GRID_LEFT * (a % NUM_OF_GRID_IN_ONE_ROW) + j * CELL_SIZE
+          const y = (window.innerHeight * 0.25) + i * CELL_SIZE
+          const x = ((window.innerWidth / 2) - GRID_WIDTH - (PARAGRAPH_WIDTH / 2) - MARGIN_RIGHT) + j * CELL_SIZE
+
+          // strokes each individual cell
+          // ctx.fillRect(x, y, CELL_SIZE, CELL_SIZE)
+          // ctx.strokeRect(x, y, CELL_SIZE, CELL_SIZE)
 
           grid[ a ][ i ].push({
             ...MIND_STATE_SETTINGS[ a ].defaultCell,
@@ -109,25 +144,21 @@ function runPoem () {
 
       // makes a outline stroke around the entire grid
       ctx.strokeStyle = STROKE_COLOUR
-      // ctx.strokeRect(GRID_X_POSITION, GRID_Y_POSITION, GRID_WIDTH, GRID_HEIGHT)
+      // ctx.strokeRect(((window.innerWidth / 2) - GRID_WIDTH - (PARAGRAPH_WIDTH / 2) - MARGIN_RIGHT), (window.innerHeight * 0.25), GRID_WIDTH, GRID_HEIGHT)
 
     }
 
-    // when gridIndex = 0 and partIndex = 0
+    // when gridIndex = 0 and textPartIndex = 0
     // initialise as left arrow hidden
-    // document.getElementById('left').classList.add('hide')
+    document.getElementById('left').classList.add('hide')
 
     // initialise first text bit
-    // ctx.fillStyle = '#454545'
-    // ctx.font = '21px Cormorant Upright'
-    // ctx.fillText(text[ 0 ].title, STATE_TEXT_X, STATE_TEXT_Y, 400)
+    ctx.fillStyle = '#454545'
+    ctx.font = '21px Cormorant Upright'
+    ctx.fillText(text[ 0 ].title, STATE_TEXT_X, STATE_TEXT_Y, 400)
 
     const textEl = document.getElementById('text')
-    textEl.innerHTML = text[ 0 ].title
-
-    startProgressBar()
-    document.getElementById('right').classList.add('hide')
-
+    textEl.innerHTML = text[ 0 ].part[ 0 ]
 
     toggleGame()
   }
@@ -139,7 +170,7 @@ function runPoem () {
     addRandomEmotion()
 
     // cleans up grid border stroke styling
-    ctx.strokeRect(GRID_X_POSITION, GRID_Y_POSITION, GRID_WIDTH, GRID_HEIGHT)
+    ctx.strokeRect(((window.innerWidth / 2) - GRID_WIDTH - (PARAGRAPH_WIDTH / 2) - MARGIN_RIGHT), (window.innerHeight * 0.25), GRID_WIDTH, GRID_HEIGHT)
   }
 
   function stepPosition () {
@@ -1010,6 +1041,8 @@ function runPoem () {
 
 
   // start game
+  const startButton = document.getElementById('start')
+  startButton.addEventListener('click', toggleGame)
 
   function toggleGame () {
     if (!isStart) {
@@ -1030,17 +1063,14 @@ function runPoem () {
     }
   }
 
-
   // ------------------
   // text settings
 
 
-
-
-  // document.getElementById('left')
-  //   .addEventListener('click', e => {
-  //     changeText('left')
-  //   })
+  document.getElementById('left')
+    .addEventListener('click', e => {
+      changeText('left')
+    })
 
   document.getElementById('right')
     .addEventListener('click', e => {
@@ -1052,88 +1082,112 @@ function runPoem () {
   const TRANSITION_TIME = 250
   let isTransitioning = false
 
-
-  function changeText () {
+  function changeText (direction) {
     if (isTransitioning) return
 
+    if (direction == 'left') {
+      textPartIndex--
 
-    partIndex++
 
 
-    // grid type
-    if (partIndex == 1) {
-      canvas.classList.add('fadeOut')
+      if (textPartIndex < 0) {
 
-      isTransitioning = true
+        // transitions canvas and text
+        textEl.classList.add('fadeOut')
+        canvas.classList.add('fadeOut')
 
-      setTimeout(() => {
-        isTransitioning = false
+        gridIndex--
+        textPartIndex = text[ gridIndex ].part.length - 1
 
-        textEl.innerHTML = text[ gridIndex ].title
-        textEl.style.fontStyle = 'italic'
+        isTransitioning = true
+        setTimeout(() => {
+          isTransitioning = false
 
-        textEl.classList.remove('fadeOut')
+          reset()
 
-      }, TRANSITION_TIME)
+          // grid pattern text
+          ctx.fillStyle = '#454545'
+          ctx.font = '21px Cormorant Upright'
+          ctx.fillText(text[ gridIndex ].title, STATE_TEXT_X, STATE_TEXT_Y, 400)
+
+          textEl.innerHTML = text[ gridIndex ].part[ textPartIndex ]
+
+          textEl.classList.remove('fadeOut')
+          canvas.classList.remove('fadeOut')
+
+        }, TRANSITION_TIME)
+
+      } else {
+        textEl.innerHTML = text[ gridIndex ].part[ textPartIndex ]
+      }
+
+      if (gridIndex == text.length - 2 || gridIndex == text.length - 1 && textPartIndex !== text[ gridIndex ].part.length - 1) {
+        document.getElementById('right').classList.remove('hide')
+      }
+
+      if (gridIndex == 0 && textPartIndex == 0) {
+        document.getElementById('left').classList.add('hide')
+      }
+
+
+    } else if (direction == 'right') {
+      textPartIndex++
+
+
+      // new grid pattern
+      if (textPartIndex >= text[ gridIndex ].part.length) {
+
+        textEl.classList.add('fadeOut')
+        canvas.classList.add('fadeOut')
+
+        isTransitioning = true
+
+        textPartIndex = 0
+
+        document.getElementById('right').classList.add('hide')
+
+        setTimeout(() => {
+          isTransitioning = false
+
+          reset()
+          gridIndex++
+
+          // grid pattern text
+          ctx.fillStyle = '#454545'
+          ctx.font = '21px Cormorant Upright'
+          ctx.fillText(text[ gridIndex ].title, STATE_TEXT_X, STATE_TEXT_Y, 400)
+
+          textEl.innerHTML = text[ gridIndex ].part[ textPartIndex ]
+
+          textEl.classList.remove('fadeOut')
+          canvas.classList.remove('fadeOut')
+
+          document.getElementById(gridIndex).play()
+          isAudioPlaying = true
+
+          if ((textPartIndex >= text[ gridIndex ].part.length - 1)) {
+            document.getElementById('right').classList.add('hide')
+          } else if (textPartIndex < text[ gridIndex ].part.length - 1) {
+            document.getElementById('right').classList.remove('hide')
+          }
+
+        }, TRANSITION_TIME)
+
+      } else {
+        textEl.innerHTML = text[ gridIndex ].part[ textPartIndex ]
+      }
+
+      // if last bit of text of the poem, hide right
+      if (gridIndex == text.length - 1 && textPartIndex >= text[ gridIndex ].part.length - 1) {
+        document.getElementById('right').classList.add('hide')
+      }
+
+      // if reached end of text section but audio is still playing and you're not transitioning, hide the right
+      if ((textPartIndex >= text[ gridIndex ].part.length - 1) && !isTransitioning && isAudioPlaying) {
+        document.getElementById('right').classList.add('hide')
+      }
+
     }
-
-    if (partIndex == 2) {
-
-      textEl.classList.add('fadeOut')
-
-      isTransitioning = true
-
-      setTimeout(() => {
-        isTransitioning = false
-
-        textEl.innerHTML = text[ gridIndex ].part[ 0 ]
-        textEl.style.fontStyle = 'normal'
-
-        textEl.classList.remove('fadeOut')
-
-      }, TRANSITION_TIME)
-
-    }
-
-    if (partIndex == 3) {
-
-      textEl.classList.add('fadeOut')
-      document.getElementById('right').classList.add('hide')
-
-      isTransitioning = true
-
-      setTimeout(() => {
-        isTransitioning = false
-
-        reset()
-
-        gridIndex++
-        partIndex = 0
-
-        window.scrollTo(0, 0)
-
-        startProgressBar()
-
-        // reset text
-        textEl.innerHTML = ' '
-        canvas.classList.remove('fadeOut')
-
-      }, TRANSITION_TIME)
-
-    }
-
-
-    // if (gridIndex == 1 || gridIndex == 0 && partIndex == 1) {
-    //   document.getElementById('left').classList.remove('hide')
-    // }
-
-    if (gridIndex == text.length - 1 && partIndex == 2) {
-      document.getElementById('right').classList.add('hide')
-    }
-
-
-
-
 
 
     // resets all cell grids
@@ -1148,36 +1202,35 @@ function runPoem () {
     }
 
 
-    // console.log(gridIndex, partIndex)
+    // console.log(gridIndex, textPartIndex)
 
   }
 
-  // -------------------
-  // progress bar
-  // https://www.w3schools.com/howto/howto_js_progressbar.asp
-
-  // sets progress bar and controller to the right of the center block
-  // document.querySelector('.poemControlContainer').style.left = `${GRID_X_POSITION + GRID_WIDTH + 100}px`
-  const progressBarEl = document.querySelector('.bar')
-
-  function startProgressBar () {
-
-
-    const INCREMENT = text[ gridIndex ].waitTime / 100
-
-    let height = 0
-
-    const interval = setInterval(() => {
-      height += 1
-      progressBarEl.style.height = `${height}%`
-
-      if (height >= 100) {
-        clearInterval(interval)
-        document.getElementById('right').classList.remove('hide')
-      }
-
-    }, INCREMENT)
+  function audioHasEndedCallback () {
+    isAudioPlaying = false
+    document.getElementById('right').classList.remove('hide')
   }
 
+  document.getElementById('1').addEventListener('ended', audioHasEndedCallback)
+  document.getElementById('2').addEventListener('ended', audioHasEndedCallback)
+  document.getElementById('3').addEventListener('ended', audioHasEndedCallback)
+  document.getElementById('4').addEventListener('ended', audioHasEndedCallback)
+  document.getElementById('5').addEventListener('ended', audioHasEndedCallback)
+  document.getElementById('6').addEventListener('ended', audioHasEndedCallback)
+  document.getElementById('7').addEventListener('ended', audioHasEndedCallback)
+  document.getElementById('8').addEventListener('ended', audioHasEndedCallback)
+
+
+  // examine button for debugging
+  // document.getElementById('examine')
+  //   .addEventListener('click', e => {
+
+  //     grid.forEach((row) => {
+  //       row.forEach((cell) => {
+  //         console.log(cell)
+  //       })
+  //     })
+
+  //   })
 
 }

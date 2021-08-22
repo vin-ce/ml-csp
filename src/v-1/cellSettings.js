@@ -168,85 +168,6 @@ const cellSettingExplanations = {
 export const MIND_STATE_SETTINGS = [
   {
     // --------------------
-    // GRID 0 (turn sound on)
-
-    newEmotionSettings: {
-      newEmotionChance: 0,
-      awarenessChance: {
-        0.25: 10,
-        0.5: 1,
-        0.75: 1,
-        1: 1,
-      }
-    },
-
-    defaultCell: {
-      ...defaultCell,
-      movementType: 'default',
-
-      modifiers: {
-        breathers: false
-      },
-
-      decay: {
-        '0.25': 20,
-        '0.5': 3,
-        '0.75': 3,
-        '1': 3,
-        'recoverFromFull': 0.7,
-      },
-
-      growth: {
-        '0.25': {
-          cycle: 3,
-          chance: 0.1
-        },
-        '0.5': {
-          cycle: 2,
-          chance: 0.1
-        },
-        '0.75': {
-          cycle: 2,
-          chance: 0.1
-        },
-      },
-    },
-
-    movementSettings: {
-      default: {
-        forward: 0.7,
-        left: 0.5,
-      },
-      left: {
-        forward: 0.3,
-        left: 0.9,
-      },
-      right: {
-        forward: 0.3,
-        left: 0.3,
-      },
-      beeline: {
-        forward: 0.95,
-        left: 0.5,
-      },
-    },
-
-    movementModifiersSettings: {
-      breathers: {
-        chance: 0,
-        stop: 0.5,
-      },
-
-      homing: {
-        enabled: true,
-        decrease: true,
-        range: 5,
-      }
-    },
-
-  },
-  {
-    // --------------------
     // GRID 1 (default)
 
     newEmotionSettings: {
@@ -928,75 +849,95 @@ export const MIND_STATE_SETTINGS = [
 
 export const text = [
   {
-    title: ` `,
-    part: [
-      `Please turn your sound on.`,
-    ]
-  },
-  {
     title: `mind state`,
     part: [
       `I think you're underestimating <br/> 
       how deeply in love you can fall in <br/> 
       with the world`,
-    ]
+    ],
+    waitTime: 2000
   },
   {
     title: `overwhelmed`,
     part: [
-      `to be breathless <br/> 
-      at the wind-tickled leaves`,
-      `to be gripped by tears<br/>
+      `
+      to be breathless <br/> 
+      at the wind-tickled leaves <br/><br/>
+      
+      to be gripped by tears<br/>
       watching <br/>
-      the shimmering web`,
-      `to be in awe at the boundless,`,
-      `at the universe that exists within <br/>
-      this`,
-      `crack`,
-      `on the pavement`,
-    ]
+      the shimmering web <br/><br/>
+      
+      to be in awe at the boundless, <br/><br/>
+      
+      at the universe that exists within <br/>
+      this <br/><br/>
+      
+      crack <br/><br/>
+      
+      on the pavement
+      <br/><br/><br/><br/><br/>
+      `,
+    ],
+    waitTime: 5000
   },
   {
     title: `rumminating`,
     part: [
       `that all things <br/>
       contain an infinite <br/>
-      no-thingness`,
-      `that to deeply know`,
-      `a sock`,
-      `is to expand the kind of waves <br/>
-      that we can even resonant with`,
-    ]
+      
+      no-thingness <br/><br/>
+      
+      that to deeply know <br/><br/>
+      
+      a sock <br/><br/>
+      
+      is to expand the kind of waves <br/>
+      that we can even resonant with 
+      <br/><br/><br/><br/><br/>`
+    ],
+    waitTime: 10000
   },
   {
     title: `clenched`,
     part: [
       `to be giddy with excitement <br/>
-      in the mornings`,
-      `at the prospect of being able to see <br/>
+      in the mornings <br/><br/>
+      
+      at the prospect of being able to see <br/>
       each and every one of the <br/>
       ten million <br/> 
-      colours`,
-      `at the whirls of the laptop fan`,
-      `at the warmness in your <br/>
-      belly button`,
-    ]
+      colours <br/><br/>
+      
+      at the whirls of the laptop fan <br/><br/>
+
+      at the warmness in your <br/>
+      belly button
+      <br/><br/><br/><br/><br/>`,
+    ],
+    waitTime: 5000
   },
   {
     title: `volatile`,
     part: [
       `that we have <br/>
       10 Richter scales of <br/>
-      potential happiness`,
-      `and we're told and conditioned<br/>
+      potential happiness <br/><br/>
+
+      and we're told and conditioned<br/>
       to believe that only magnitude<br/>
       2, maybe 3, <br/>
       are not just <br/> 
       the only sane levels of happiness<br/>
-      but also all that's possible`,
-      `that...`,
-      `is electrifying!`,
-    ]
+      but also all that's possible <br/><br/>
+
+      that... <br/><br/>
+
+      is electrifying!
+      <br/><br/><br/><br/><br/>`,
+    ],
+    waitTime: 10000
   },
   {
     title: `anxious`,
@@ -1004,34 +945,41 @@ export const text = [
       `so many sunsets yet<br/>
       to be felt,<br/>
       profoundly`,
-    ]
+    ],
+    waitTime: 5000
   },
   {
     title: `stilted`,
     part: [
       `just imagine a life where <br/>
-      with every passing day`,
-      `your highschool crush <br/> 
+      with every passing day <br/><br/>
+
+      your highschool crush <br/> 
       for the world <br/>
-      ever expands`,
-      `as your newborn love <br/> 
+      ever expands <br/><br/>
+
+      as your newborn love <br/> 
       for the world <br/>
-      ever deepens`
-    ]
+      ever deepens
+      <br/><br/><br/><br/><br/>`
+    ],
+    waitTime: 5000
   },
   {
     title: `mindful`,
     part: [
       `I wish for nothing more <br/>
-      fervently`,
-      `than for that to cultivate <br/>
+      fervently <br/><br/>
+      than for that to cultivate <br/>
       in the darkest corners of your <br/> 
-      gut`,
-      `so that the sparks of your mind roots <br/>
-      cannot help but be in ecstasy`,
-      `with this silly thing <br/>
-      we call`,
-      `existence.`
-    ]
+      gut <br/><br/>
+      so that the sparks of your mind roots <br/>
+      cannot help but be in ecstasy <br/><br/>
+      with this silly thing <br/>
+      we call <br/><br/>
+      existence.
+      <br/><br/><br/><br/><br/>`
+    ],
+    waitTime: 5000
   },
 ]
