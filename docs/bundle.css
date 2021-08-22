@@ -1,26 +1,26 @@
 /* stylus:D:\Vincent Li\Desktop\Code\in-love-with-the-world_v2\src\styles.styl */
-body {
+.home {
   margin: 0;
   background-color: #f2f2f2;
   overflow-x: hidden;
   font-family: "Cormorant Upright", serif;
   font-size: 21px;
 }
-div:selection,
-a:selection {
+.home div:selection,
+.home a:selection {
   background-color: #ffd02b;
 }
-.content {
+.home .content {
   width: max-content;
   margin: 0 auto;
   margin-top: 33vh;
 }
-a {
+.home a {
   display: block;
   margin-top: 10px;
   color: #eb4255;
 }
-a:visited {
+.home a:visited {
   color: #e68a94;
 }
 
