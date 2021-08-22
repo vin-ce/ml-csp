@@ -120,73 +120,6 @@ var cellSettingExplanations = {
 var MIND_STATE_SETTINGS = [
   {
     newEmotionSettings: {
-      newEmotionChance: 0,
-      awarenessChance: {
-        0.25: 10,
-        0.5: 1,
-        0.75: 1,
-        1: 1
-      }
-    },
-    defaultCell: __spreadProps(__spreadValues({}, defaultCell), {
-      movementType: "default",
-      modifiers: {
-        breathers: false
-      },
-      decay: {
-        "0.25": 20,
-        "0.5": 3,
-        "0.75": 3,
-        "1": 3,
-        "recoverFromFull": 0.7
-      },
-      growth: {
-        "0.25": {
-          cycle: 3,
-          chance: 0.1
-        },
-        "0.5": {
-          cycle: 2,
-          chance: 0.1
-        },
-        "0.75": {
-          cycle: 2,
-          chance: 0.1
-        }
-      }
-    }),
-    movementSettings: {
-      default: {
-        forward: 0.7,
-        left: 0.5
-      },
-      left: {
-        forward: 0.3,
-        left: 0.9
-      },
-      right: {
-        forward: 0.3,
-        left: 0.3
-      },
-      beeline: {
-        forward: 0.95,
-        left: 0.5
-      }
-    },
-    movementModifiersSettings: {
-      breathers: {
-        chance: 0,
-        stop: 0.5
-      },
-      homing: {
-        enabled: true,
-        decrease: true,
-        range: 5
-      }
-    }
-  },
-  {
-    newEmotionSettings: {
       newEmotionChance: 0.1,
       awarenessChance: {
         0.25: 10,
@@ -666,75 +599,95 @@ var MIND_STATE_SETTINGS = [
 ];
 var text = [
   {
-    title: ` `,
-    part: [
-      `Please turn your sound on.`
-    ]
-  },
-  {
     title: `mind state`,
     part: [
       `I think you're underestimating <br/> 
       how deeply in love you can fall in <br/> 
       with the world`
-    ]
+    ],
+    waitTime: 2e3
   },
   {
     title: `overwhelmed`,
     part: [
-      `to be breathless <br/> 
-      at the wind-tickled leaves`,
-      `to be gripped by tears<br/>
+      `
+      to be breathless <br/> 
+      at the wind-tickled leaves <br/><br/>
+      
+      to be gripped by tears<br/>
       watching <br/>
-      the shimmering web`,
-      `to be in awe at the boundless,`,
-      `at the universe that exists within <br/>
-      this`,
-      `crack`,
-      `on the pavement`
-    ]
+      the shimmering web <br/><br/>
+      
+      to be in awe at the boundless, <br/><br/>
+      
+      at the universe that exists within <br/>
+      this <br/><br/>
+      
+      crack <br/><br/>
+      
+      on the pavement
+      <br/><br/><br/><br/><br/>
+      `
+    ],
+    waitTime: 5e3
   },
   {
     title: `rumminating`,
     part: [
       `that all things <br/>
       contain an infinite <br/>
-      no-thingness`,
-      `that to deeply know`,
-      `a sock`,
-      `is to expand the kind of waves <br/>
-      that we can even resonant with`
-    ]
+      
+      no-thingness <br/><br/>
+      
+      that to deeply know <br/><br/>
+      
+      a sock <br/><br/>
+      
+      is to expand the kind of waves <br/>
+      that we can even resonant with 
+      <br/><br/><br/><br/><br/>`
+    ],
+    waitTime: 1e4
   },
   {
     title: `clenched`,
     part: [
       `to be giddy with excitement <br/>
-      in the mornings`,
-      `at the prospect of being able to see <br/>
+      in the mornings <br/><br/>
+      
+      at the prospect of being able to see <br/>
       each and every one of the <br/>
       ten million <br/> 
-      colours`,
-      `at the whirls of the laptop fan`,
-      `at the warmness in your <br/>
-      belly button`
-    ]
+      colours <br/><br/>
+      
+      at the whirls of the laptop fan <br/><br/>
+
+      at the warmness in your <br/>
+      belly button
+      <br/><br/><br/><br/><br/>`
+    ],
+    waitTime: 5e3
   },
   {
     title: `volatile`,
     part: [
       `that we have <br/>
       10 Richter scales of <br/>
-      potential happiness`,
-      `and we're told and conditioned<br/>
+      potential happiness <br/><br/>
+
+      and we're told and conditioned<br/>
       to believe that only magnitude<br/>
       2, maybe 3, <br/>
       are not just <br/> 
       the only sane levels of happiness<br/>
-      but also all that's possible`,
-      `that...`,
-      `is electrifying!`
-    ]
+      but also all that's possible <br/><br/>
+
+      that... <br/><br/>
+
+      is electrifying!
+      <br/><br/><br/><br/><br/>`
+    ],
+    waitTime: 1e4
   },
   {
     title: `anxious`,
@@ -742,35 +695,42 @@ var text = [
       `so many sunsets yet<br/>
       to be felt,<br/>
       profoundly`
-    ]
+    ],
+    waitTime: 5e3
   },
   {
     title: `stilted`,
     part: [
       `just imagine a life where <br/>
-      with every passing day`,
-      `your highschool crush <br/> 
+      with every passing day <br/><br/>
+
+      your highschool crush <br/> 
       for the world <br/>
-      ever expands`,
-      `as your newborn love <br/> 
+      ever expands <br/><br/>
+
+      as your newborn love <br/> 
       for the world <br/>
-      ever deepens`
-    ]
+      ever deepens
+      <br/><br/><br/><br/><br/>`
+    ],
+    waitTime: 5e3
   },
   {
     title: `mindful`,
     part: [
       `I wish for nothing more <br/>
-      fervently`,
-      `than for that to cultivate <br/>
+      fervently <br/><br/>
+      than for that to cultivate <br/>
       in the darkest corners of your <br/> 
-      gut`,
-      `so that the sparks of your mind roots <br/>
-      cannot help but be in ecstasy`,
-      `with this silly thing <br/>
-      we call`,
-      `existence.`
-    ]
+      gut <br/><br/>
+      so that the sparks of your mind roots <br/>
+      cannot help but be in ecstasy <br/><br/>
+      with this silly thing <br/>
+      we call <br/><br/>
+      existence.
+      <br/><br/><br/><br/><br/>`
+    ],
+    waitTime: 5e3
   }
 ];
 
@@ -785,10 +745,9 @@ function runPoem() {
   const ctx = canvas.getContext("2d");
   let isStart = false;
   let gridIndex = 0;
-  let textPartIndex = 0;
+  let partIndex = 0;
   let attempts = 0;
   let gameInterval;
-  let isAudioPlaying = false;
   const AWARENESS_INCREMENT = 0.25;
   const ROWS_NUM = 20;
   const COLUMNS_NUM = 20;
@@ -801,21 +760,12 @@ function runPoem() {
   const BLUE_600 = "#0D58CB";
   const BLUE_400 = "#1F8BED";
   const BLUE_200 = "#91DAFB";
-  const MARGIN_TOP = 10;
-  const MARGIN_LEFT = 140;
   const MARGIN_RIGHT = 100;
-  const MARGIN_GRID_LEFT = 20;
-  const MARGIN_GRID_TOP = 250;
-  const SCROLLBAR_WIDTH = 20;
-  const NUM_OF_GRID_IN_ONE_ROW = 3;
-  const GRID_WIDTH = 100;
+  const GRID_WIDTH = 350;
   const GRID_HEIGHT = GRID_WIDTH;
   const CELL_SIZE = GRID_WIDTH / ROWS_NUM;
-  const NUM_OF_GRID_ROWS = Math.ceil(GRID_NUM / NUM_OF_GRID_IN_ONE_ROW);
-  const PARAGRAPH_WIDTH = 400;
-  const TEXT_MARGIN_TOP = 50;
-  const STATE_TEXT_Y = window.innerHeight * 0.25 + GRID_HEIGHT + TEXT_MARGIN_TOP;
-  const STATE_TEXT_X = window.innerWidth / 2 - GRID_WIDTH - PARAGRAPH_WIDTH / 2 - MARGIN_RIGHT;
+  const GRID_X_POSITION = window.innerWidth / 2 - GRID_WIDTH / 2;
+  const GRID_Y_POSITION = window.innerHeight * 0.25;
   const STROKE_COLOUR = BLACK;
   const FILL_COLOUR = GREY_500;
   ctx.strokeStyle = STROKE_COLOUR;
@@ -827,8 +777,8 @@ function runPoem() {
       for (let i = 0; i < ROWS_NUM; i++) {
         grid[a].push([]);
         for (let j = 0; j < COLUMNS_NUM; j++) {
-          const y = window.innerHeight * 0.25 + i * CELL_SIZE;
-          const x = window.innerWidth / 2 - GRID_WIDTH - PARAGRAPH_WIDTH / 2 - MARGIN_RIGHT + j * CELL_SIZE;
+          const y = GRID_Y_POSITION + i * CELL_SIZE;
+          const x = GRID_X_POSITION + j * CELL_SIZE;
           grid[a][i].push(__spreadProps(__spreadValues({}, MIND_STATE_SETTINGS[a].defaultCell), {
             x,
             y
@@ -837,19 +787,17 @@ function runPoem() {
       }
       ctx.strokeStyle = STROKE_COLOUR;
     }
-    document.getElementById("left").classList.add("hide");
-    ctx.fillStyle = "#454545";
-    ctx.font = "21px Cormorant Upright";
-    ctx.fillText(text[0].title, STATE_TEXT_X, STATE_TEXT_Y, 400);
     const textEl2 = document.getElementById("text");
-    textEl2.innerHTML = text[0].part[0];
+    textEl2.innerHTML = text[0].title;
+    startProgressBar();
+    document.getElementById("right").classList.add("hide");
     toggleGame();
   }
   function stepGrid() {
     stepPosition();
     stepAttribute();
     addRandomEmotion();
-    ctx.strokeRect(window.innerWidth / 2 - GRID_WIDTH - PARAGRAPH_WIDTH / 2 - MARGIN_RIGHT, window.innerHeight * 0.25, GRID_WIDTH, GRID_HEIGHT);
+    ctx.strokeRect(GRID_X_POSITION, GRID_Y_POSITION, GRID_WIDTH, GRID_HEIGHT);
   }
   function stepPosition() {
     for (let i = 0; i < ROWS_NUM; i++) {
@@ -1305,8 +1253,6 @@ function runPoem() {
     if (cell.modulateSettingsChange)
       cell.modulateSettingsChange.isFormTwo = false;
   }
-  const startButton = document.getElementById("start");
-  startButton.addEventListener("click", toggleGame);
   function toggleGame() {
     if (!isStart) {
       isStart = true;
@@ -1318,80 +1264,53 @@ function runPoem() {
       clearInterval(gameInterval);
     }
   }
-  document.getElementById("left").addEventListener("click", (e) => {
-    changeText("left");
-  });
   document.getElementById("right").addEventListener("click", (e) => {
     changeText("right");
   });
   const textEl = document.getElementById("text");
   const TRANSITION_TIME = 250;
   let isTransitioning = false;
-  function changeText(direction) {
+  function changeText() {
     if (isTransitioning)
       return;
-    if (direction == "left") {
-      textPartIndex--;
-      if (textPartIndex < 0) {
-        textEl.classList.add("fadeOut");
-        canvas.classList.add("fadeOut");
-        gridIndex--;
-        textPartIndex = text[gridIndex].part.length - 1;
-        isTransitioning = true;
-        setTimeout(() => {
-          isTransitioning = false;
-          reset();
-          ctx.fillStyle = "#454545";
-          ctx.font = "21px Cormorant Upright";
-          ctx.fillText(text[gridIndex].title, STATE_TEXT_X, STATE_TEXT_Y, 400);
-          textEl.innerHTML = text[gridIndex].part[textPartIndex];
-          textEl.classList.remove("fadeOut");
-          canvas.classList.remove("fadeOut");
-        }, TRANSITION_TIME);
-      } else {
-        textEl.innerHTML = text[gridIndex].part[textPartIndex];
-      }
-      if (gridIndex == text.length - 2 || gridIndex == text.length - 1 && textPartIndex !== text[gridIndex].part.length - 1) {
-        document.getElementById("right").classList.remove("hide");
-      }
-      if (gridIndex == 0 && textPartIndex == 0) {
-        document.getElementById("left").classList.add("hide");
-      }
-    } else if (direction == "right") {
-      textPartIndex++;
-      if (textPartIndex >= text[gridIndex].part.length) {
-        textEl.classList.add("fadeOut");
-        canvas.classList.add("fadeOut");
-        isTransitioning = true;
-        textPartIndex = 0;
-        document.getElementById("right").classList.add("hide");
-        setTimeout(() => {
-          isTransitioning = false;
-          reset();
-          gridIndex++;
-          ctx.fillStyle = "#454545";
-          ctx.font = "21px Cormorant Upright";
-          ctx.fillText(text[gridIndex].title, STATE_TEXT_X, STATE_TEXT_Y, 400);
-          textEl.innerHTML = text[gridIndex].part[textPartIndex];
-          textEl.classList.remove("fadeOut");
-          canvas.classList.remove("fadeOut");
-          document.getElementById(gridIndex).play();
-          isAudioPlaying = true;
-          if (textPartIndex >= text[gridIndex].part.length - 1) {
-            document.getElementById("right").classList.add("hide");
-          } else if (textPartIndex < text[gridIndex].part.length - 1) {
-            document.getElementById("right").classList.remove("hide");
-          }
-        }, TRANSITION_TIME);
-      } else {
-        textEl.innerHTML = text[gridIndex].part[textPartIndex];
-      }
-      if (gridIndex == text.length - 1 && textPartIndex >= text[gridIndex].part.length - 1) {
-        document.getElementById("right").classList.add("hide");
-      }
-      if (textPartIndex >= text[gridIndex].part.length - 1 && !isTransitioning && isAudioPlaying) {
-        document.getElementById("right").classList.add("hide");
-      }
+    partIndex++;
+    if (partIndex == 1) {
+      canvas.classList.add("fadeOut");
+      isTransitioning = true;
+      setTimeout(() => {
+        isTransitioning = false;
+        textEl.innerHTML = text[gridIndex].title;
+        textEl.style.fontStyle = "italic";
+        textEl.classList.remove("fadeOut");
+      }, TRANSITION_TIME);
+    }
+    if (partIndex == 2) {
+      textEl.classList.add("fadeOut");
+      isTransitioning = true;
+      setTimeout(() => {
+        isTransitioning = false;
+        textEl.innerHTML = text[gridIndex].part[0];
+        textEl.style.fontStyle = "normal";
+        textEl.classList.remove("fadeOut");
+      }, TRANSITION_TIME);
+    }
+    if (partIndex == 3) {
+      textEl.classList.add("fadeOut");
+      document.getElementById("right").classList.add("hide");
+      isTransitioning = true;
+      setTimeout(() => {
+        isTransitioning = false;
+        reset();
+        gridIndex++;
+        partIndex = 0;
+        window.scrollTo(0, 0);
+        startProgressBar();
+        textEl.innerHTML = " ";
+        canvas.classList.remove("fadeOut");
+      }, TRANSITION_TIME);
+    }
+    if (gridIndex == text.length - 1 && partIndex == 2) {
+      document.getElementById("right").classList.add("hide");
     }
     function reset() {
       grid[gridIndex].forEach((row) => {
@@ -1402,18 +1321,19 @@ function runPoem() {
       ctx.clearRect(0, 0, canvas.height, canvas.width);
     }
   }
-  function audioHasEndedCallback() {
-    isAudioPlaying = false;
-    document.getElementById("right").classList.remove("hide");
+  const progressBarEl = document.querySelector(".bar");
+  function startProgressBar() {
+    const INCREMENT = text[gridIndex].waitTime / 100;
+    let height = 0;
+    const interval = setInterval(() => {
+      height += 1;
+      progressBarEl.style.height = `${height}%`;
+      if (height >= 100) {
+        clearInterval(interval);
+        document.getElementById("right").classList.remove("hide");
+      }
+    }, INCREMENT);
   }
-  document.getElementById("1").addEventListener("ended", audioHasEndedCallback);
-  document.getElementById("2").addEventListener("ended", audioHasEndedCallback);
-  document.getElementById("3").addEventListener("ended", audioHasEndedCallback);
-  document.getElementById("4").addEventListener("ended", audioHasEndedCallback);
-  document.getElementById("5").addEventListener("ended", audioHasEndedCallback);
-  document.getElementById("6").addEventListener("ended", audioHasEndedCallback);
-  document.getElementById("7").addEventListener("ended", audioHasEndedCallback);
-  document.getElementById("8").addEventListener("ended", audioHasEndedCallback);
 }
 
 // src/v-2/cellSettings.js
@@ -1516,6 +1436,73 @@ var cellSettingExplanations2 = {
   }
 };
 var MIND_STATE_SETTINGS2 = [
+  {
+    newEmotionSettings: {
+      newEmotionChance: 0,
+      awarenessChance: {
+        0.25: 10,
+        0.5: 1,
+        0.75: 1,
+        1: 1
+      }
+    },
+    defaultCell: __spreadProps(__spreadValues({}, defaultCell2), {
+      movementType: "default",
+      modifiers: {
+        breathers: false
+      },
+      decay: {
+        "0.25": 20,
+        "0.5": 3,
+        "0.75": 3,
+        "1": 3,
+        "recoverFromFull": 0.7
+      },
+      growth: {
+        "0.25": {
+          cycle: 3,
+          chance: 0.1
+        },
+        "0.5": {
+          cycle: 2,
+          chance: 0.1
+        },
+        "0.75": {
+          cycle: 2,
+          chance: 0.1
+        }
+      }
+    }),
+    movementSettings: {
+      default: {
+        forward: 0.7,
+        left: 0.5
+      },
+      left: {
+        forward: 0.3,
+        left: 0.9
+      },
+      right: {
+        forward: 0.3,
+        left: 0.3
+      },
+      beeline: {
+        forward: 0.95,
+        left: 0.5
+      }
+    },
+    movementModifiersSettings: {
+      breathers: {
+        chance: 0,
+        stop: 0.5
+      },
+      homing: {
+        enabled: true,
+        decrease: true,
+        range: 5
+      }
+    }
+  },
   {
     newEmotionSettings: {
       newEmotionChance: 0.1,
@@ -1997,95 +1984,75 @@ var MIND_STATE_SETTINGS2 = [
 ];
 var text2 = [
   {
+    title: ` `,
+    part: [
+      `Please turn your sound on.`
+    ]
+  },
+  {
     title: `mind state`,
     part: [
       `I think you're underestimating <br/> 
       how deeply in love you can fall in <br/> 
       with the world`
-    ],
-    waitTime: 2e3
+    ]
   },
   {
     title: `overwhelmed`,
     part: [
-      `
-      to be breathless <br/> 
-      at the wind-tickled leaves <br/><br/>
-      
-      to be gripped by tears<br/>
+      `to be breathless <br/> 
+      at the wind-tickled leaves`,
+      `to be gripped by tears<br/>
       watching <br/>
-      the shimmering web <br/><br/>
-      
-      to be in awe at the boundless, <br/><br/>
-      
-      at the universe that exists within <br/>
-      this <br/><br/>
-      
-      crack <br/><br/>
-      
-      on the pavement
-      <br/><br/><br/><br/><br/>
-      `
-    ],
-    waitTime: 5e3
+      the shimmering web`,
+      `to be in awe at the boundless,`,
+      `at the universe that exists within <br/>
+      this`,
+      `crack`,
+      `on the pavement`
+    ]
   },
   {
     title: `rumminating`,
     part: [
       `that all things <br/>
       contain an infinite <br/>
-      
-      no-thingness <br/><br/>
-      
-      that to deeply know <br/><br/>
-      
-      a sock <br/><br/>
-      
-      is to expand the kind of waves <br/>
-      that we can even resonant with 
-      <br/><br/><br/><br/><br/>`
-    ],
-    waitTime: 1e4
+      no-thingness`,
+      `that to deeply know`,
+      `a sock`,
+      `is to expand the kind of waves <br/>
+      that we can even resonant with`
+    ]
   },
   {
     title: `clenched`,
     part: [
       `to be giddy with excitement <br/>
-      in the mornings <br/><br/>
-      
-      at the prospect of being able to see <br/>
+      in the mornings`,
+      `at the prospect of being able to see <br/>
       each and every one of the <br/>
       ten million <br/> 
-      colours <br/><br/>
-      
-      at the whirls of the laptop fan <br/><br/>
-
-      at the warmness in your <br/>
-      belly button
-      <br/><br/><br/><br/><br/>`
-    ],
-    waitTime: 5e3
+      colours`,
+      `at the whirls of the laptop fan`,
+      `at the warmness in your <br/>
+      belly button`
+    ]
   },
   {
     title: `volatile`,
     part: [
       `that we have <br/>
       10 Richter scales of <br/>
-      potential happiness <br/><br/>
-
-      and we're told and conditioned<br/>
+      potential happiness`,
+      `and we're told and conditioned<br/>
       to believe that only magnitude<br/>
       2, maybe 3, <br/>
       are not just <br/> 
       the only sane levels of happiness<br/>
-      but also all that's possible <br/><br/>
-
-      that... <br/><br/>
-
-      is electrifying!
-      <br/><br/><br/><br/><br/>`
-    ],
-    waitTime: 1e4
+      but also all that's possible`,
+      `that...`,
+      `is electrifying!`
+    ]
   },
   {
     title: `anxious`,
@@ -2093,42 +2060,35 @@ var text2 = [
       `so many sunsets yet<br/>
       to be felt,<br/>
       profoundly`
-    ],
-    waitTime: 5e3
+    ]
   },
   {
     title: `stilted`,
     part: [
       `just imagine a life where <br/>
-      with every passing day <br/><br/>
-
-      your highschool crush <br/> 
+      with every passing day`,
+      `your highschool crush <br/> 
       for the world <br/>
-      ever expands <br/><br/>
-
-      as your newborn love <br/> 
+      ever expands`,
+      `as your newborn love <br/> 
       for the world <br/>
-      ever deepens
-      <br/><br/><br/><br/><br/>`
-    ],
-    waitTime: 5e3
+      ever deepens`
+    ]
   },
   {
     title: `mindful`,
     part: [
       `I wish for nothing more <br/>
-      fervently <br/><br/>
-      than for that to cultivate <br/>
+      fervently`,
+      `than for that to cultivate <br/>
       in the darkest corners of your <br/> 
-      gut <br/><br/>
-      so that the sparks of your mind roots <br/>
-      cannot help but be in ecstasy <br/><br/>
-      with this silly thing <br/>
-      we call <br/><br/>
-      existence.
-      <br/><br/><br/><br/><br/>`
-    ],
-    waitTime: 5e3
+      gut`,
+      `so that the sparks of your mind roots <br/>
+      cannot help but be in ecstasy`,
+      `with this silly thing <br/>
+      we call`,
+      `existence.`
+    ]
   }
 ];
 
@@ -2143,9 +2103,10 @@ function runPoem2() {
   const ctx = canvas.getContext("2d");
   let isStart = false;
   let gridIndex = 0;
-  let partIndex = 0;
+  let textPartIndex = 0;
   let attempts = 0;
   let gameInterval;
+  let isAudioPlaying = false;
   const AWARENESS_INCREMENT = 0.25;
   const ROWS_NUM = 20;
   const COLUMNS_NUM = 20;
@@ -2158,12 +2119,21 @@ function runPoem2() {
   const BLUE_600 = "#0D58CB";
   const BLUE_400 = "#1F8BED";
   const BLUE_200 = "#91DAFB";
+  const MARGIN_TOP = 10;
+  const MARGIN_LEFT = 140;
   const MARGIN_RIGHT = 100;
-  const GRID_WIDTH = 350;
+  const MARGIN_GRID_LEFT = 20;
+  const MARGIN_GRID_TOP = 250;
+  const SCROLLBAR_WIDTH = 20;
+  const NUM_OF_GRID_IN_ONE_ROW = 3;
+  const GRID_WIDTH = 100;
   const GRID_HEIGHT = GRID_WIDTH;
   const CELL_SIZE = GRID_WIDTH / ROWS_NUM;
-  const GRID_X_POSITION = window.innerWidth / 2 - GRID_WIDTH / 2;
-  const GRID_Y_POSITION = window.innerHeight * 0.25;
+  const NUM_OF_GRID_ROWS = Math.ceil(GRID_NUM / NUM_OF_GRID_IN_ONE_ROW);
+  const PARAGRAPH_WIDTH = 400;
+  const TEXT_MARGIN_TOP = 50;
+  const STATE_TEXT_Y = window.innerHeight * 0.25 + GRID_HEIGHT + TEXT_MARGIN_TOP;
+  const STATE_TEXT_X = window.innerWidth / 2 - GRID_WIDTH - PARAGRAPH_WIDTH / 2 - MARGIN_RIGHT;
   const STROKE_COLOUR = BLACK;
   const FILL_COLOUR = GREY_500;
   ctx.strokeStyle = STROKE_COLOUR;
@@ -2175,8 +2145,8 @@ function runPoem2() {
       for (let i = 0; i < ROWS_NUM; i++) {
         grid[a].push([]);
         for (let j = 0; j < COLUMNS_NUM; j++) {
-          const y = GRID_Y_POSITION + i * CELL_SIZE;
-          const x = GRID_X_POSITION + j * CELL_SIZE;
+          const y = window.innerHeight * 0.25 + i * CELL_SIZE;
+          const x = window.innerWidth / 2 - GRID_WIDTH - PARAGRAPH_WIDTH / 2 - MARGIN_RIGHT + j * CELL_SIZE;
           grid[a][i].push(__spreadProps(__spreadValues({}, MIND_STATE_SETTINGS2[a].defaultCell), {
             x,
             y
@@ -2185,17 +2155,19 @@ function runPoem2() {
       }
       ctx.strokeStyle = STROKE_COLOUR;
     }
+    document.getElementById("left").classList.add("hide");
+    ctx.fillStyle = "#454545";
+    ctx.font = "21px Cormorant Upright";
+    ctx.fillText(text2[0].title, STATE_TEXT_X, STATE_TEXT_Y, 400);
     const textEl2 = document.getElementById("text");
-    textEl2.innerHTML = text2[0].title;
-    startProgressBar();
-    document.getElementById("right").classList.add("hide");
+    textEl2.innerHTML = text2[0].part[0];
     toggleGame();
   }
   function stepGrid() {
     stepPosition();
     stepAttribute();
     addRandomEmotion();
-    ctx.strokeRect(GRID_X_POSITION, GRID_Y_POSITION, GRID_WIDTH, GRID_HEIGHT);
+    ctx.strokeRect(window.innerWidth / 2 - GRID_WIDTH - PARAGRAPH_WIDTH / 2 - MARGIN_RIGHT, window.innerHeight * 0.25, GRID_WIDTH, GRID_HEIGHT);
   }
   function stepPosition() {
     for (let i = 0; i < ROWS_NUM; i++) {
@@ -2651,6 +2623,8 @@ function runPoem2() {
     if (cell.modulateSettingsChange)
       cell.modulateSettingsChange.isFormTwo = false;
   }
+  const startButton = document.getElementById("start");
+  startButton.addEventListener("click", toggleGame);
   function toggleGame() {
     if (!isStart) {
       isStart = true;
@@ -2662,53 +2636,80 @@ function runPoem2() {
       clearInterval(gameInterval);
     }
   }
+  document.getElementById("left").addEventListener("click", (e) => {
+    changeText("left");
+  });
   document.getElementById("right").addEventListener("click", (e) => {
     changeText("right");
   });
   const textEl = document.getElementById("text");
   const TRANSITION_TIME = 250;
   let isTransitioning = false;
-  function changeText() {
+  function changeText(direction) {
     if (isTransitioning)
       return;
-    partIndex++;
-    if (partIndex == 1) {
-      canvas.classList.add("fadeOut");
-      isTransitioning = true;
-      setTimeout(() => {
-        isTransitioning = false;
-        textEl.innerHTML = text2[gridIndex].title;
-        textEl.style.fontStyle = "italic";
-        textEl.classList.remove("fadeOut");
-      }, TRANSITION_TIME);
-    }
-    if (partIndex == 2) {
-      textEl.classList.add("fadeOut");
-      isTransitioning = true;
-      setTimeout(() => {
-        isTransitioning = false;
-        textEl.innerHTML = text2[gridIndex].part[0];
-        textEl.style.fontStyle = "normal";
-        textEl.classList.remove("fadeOut");
-      }, TRANSITION_TIME);
-    }
-    if (partIndex == 3) {
-      textEl.classList.add("fadeOut");
-      document.getElementById("right").classList.add("hide");
-      isTransitioning = true;
-      setTimeout(() => {
-        isTransitioning = false;
-        reset();
-        gridIndex++;
-        partIndex = 0;
-        window.scrollTo(0, 0);
-        startProgressBar();
-        textEl.innerHTML = " ";
-        canvas.classList.remove("fadeOut");
-      }, TRANSITION_TIME);
-    }
-    if (gridIndex == text2.length - 1 && partIndex == 2) {
-      document.getElementById("right").classList.add("hide");
+    if (direction == "left") {
+      textPartIndex--;
+      if (textPartIndex < 0) {
+        textEl.classList.add("fadeOut");
+        canvas.classList.add("fadeOut");
+        gridIndex--;
+        textPartIndex = text2[gridIndex].part.length - 1;
+        isTransitioning = true;
+        setTimeout(() => {
+          isTransitioning = false;
+          reset();
+          ctx.fillStyle = "#454545";
+          ctx.font = "21px Cormorant Upright";
+          ctx.fillText(text2[gridIndex].title, STATE_TEXT_X, STATE_TEXT_Y, 400);
+          textEl.innerHTML = text2[gridIndex].part[textPartIndex];
+          textEl.classList.remove("fadeOut");
+          canvas.classList.remove("fadeOut");
+        }, TRANSITION_TIME);
+      } else {
+        textEl.innerHTML = text2[gridIndex].part[textPartIndex];
+      }
+      if (gridIndex == text2.length - 2 || gridIndex == text2.length - 1 && textPartIndex !== text2[gridIndex].part.length - 1) {
+        document.getElementById("right").classList.remove("hide");
+      }
+      if (gridIndex == 0 && textPartIndex == 0) {
+        document.getElementById("left").classList.add("hide");
+      }
+    } else if (direction == "right") {
+      textPartIndex++;
+      if (textPartIndex >= text2[gridIndex].part.length) {
+        textEl.classList.add("fadeOut");
+        canvas.classList.add("fadeOut");
+        isTransitioning = true;
+        textPartIndex = 0;
+        document.getElementById("right").classList.add("hide");
+        setTimeout(() => {
+          isTransitioning = false;
+          reset();
+          gridIndex++;
+          ctx.fillStyle = "#454545";
+          ctx.font = "21px Cormorant Upright";
+          ctx.fillText(text2[gridIndex].title, STATE_TEXT_X, STATE_TEXT_Y, 400);
+          textEl.innerHTML = text2[gridIndex].part[textPartIndex];
+          textEl.classList.remove("fadeOut");
+          canvas.classList.remove("fadeOut");
+          document.getElementById(gridIndex).play();
+          isAudioPlaying = true;
+          if (textPartIndex >= text2[gridIndex].part.length - 1) {
+            document.getElementById("right").classList.add("hide");
+          } else if (textPartIndex < text2[gridIndex].part.length - 1) {
+            document.getElementById("right").classList.remove("hide");
+          }
+        }, TRANSITION_TIME);
+      } else {
+        textEl.innerHTML = text2[gridIndex].part[textPartIndex];
+      }
+      if (gridIndex == text2.length - 1 && textPartIndex >= text2[gridIndex].part.length - 1) {
+        document.getElementById("right").classList.add("hide");
+      }
+      if (textPartIndex >= text2[gridIndex].part.length - 1 && !isTransitioning && isAudioPlaying) {
+        document.getElementById("right").classList.add("hide");
+      }
     }
     function reset() {
       grid[gridIndex].forEach((row) => {
@@ -2719,18 +2720,17 @@ function runPoem2() {
       ctx.clearRect(0, 0, canvas.height, canvas.width);
     }
   }
-  const progressBarEl = document.querySelector(".bar");
-  function startProgressBar() {
-    const INCREMENT = text2[gridIndex].waitTime / 100;
-    let height = 0;
-    const interval = setInterval(() => {
-      height += 1;
-      progressBarEl.style.height = `${height}%`;
-      if (height >= 100) {
-        clearInterval(interval);
-        document.getElementById("right").classList.remove("hide");
-      }
-    }, INCREMENT);
+  function audioHasEndedCallback() {
+    isAudioPlaying = false;
+    document.getElementById("right").classList.remove("hide");
   }
+  document.getElementById("1").addEventListener("ended", audioHasEndedCallback);
+  document.getElementById("2").addEventListener("ended", audioHasEndedCallback);
+  document.getElementById("3").addEventListener("ended", audioHasEndedCallback);
+  document.getElementById("4").addEventListener("ended", audioHasEndedCallback);
+  document.getElementById("5").addEventListener("ended", audioHasEndedCallback);
+  document.getElementById("6").addEventListener("ended", audioHasEndedCallback);
+  document.getElementById("7").addEventListener("ended", audioHasEndedCallback);
+  document.getElementById("8").addEventListener("ended", audioHasEndedCallback);
 }
 //# sourceMappingURL=bundle.js.map
